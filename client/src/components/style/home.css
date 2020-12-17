@@ -1,0 +1,36 @@
+.main2 {
+    text-align: center;
+    background-image: url(../image/ban.jpg);
+    width: 100vw;
+    height: 100vh;
+}
+.text {
+    padding-top: 200px;
+    color: brown;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 300;
+    font-size: xx-large;
+}
+.rightpart {
+    padding-top: 100px;
+}
+.leftpart {
+    padding-top: 100px;
+}
+
+.logout {
+    margin-left: 1100px;
+}
+.firstbutton {
+    width: 100px;
+    margin-left: 430px;
+}
+.secondbutton {
+    width: 150px;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 830px;
+}
+.register {
+    padding-left: 900px;
+}

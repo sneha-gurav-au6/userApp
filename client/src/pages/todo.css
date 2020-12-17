@@ -1,0 +1,20 @@
+.card {
+    background-image: linear-gradient(
+        to right top,
+        #d16ba5,
+        #b389d8,
+        #7fa8f6,
+        #40c1fa,
+        #38d5ea,
+        #4bdbe4,
+        #5fe0dd,
+        #73e5d7,
+        #67e3e1,
+        #5fe0eb,
+        #5cddf4,
+        #5fd9fb
+    );
+    margin: 20px;
+}
+.main {
+}

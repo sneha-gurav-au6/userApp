@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+
+
+
+
+.clock{
+    position: relative;
+    border: 10px solid black;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.clock .hand{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%);    
+    transform-origin: bottom;
+    border: 3px solid transparent;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.clock .hand.hour {
+    width: 8px;
+    height: 35%;
+    animation: rotate 8s linear infinite;
+    background-color: skyblue;
+}
+
+.clock .hand.minute {
+    width: 6px;
+    height: 40%;
+    z-index: 10;
+    animation: rotate 5s linear infinite;
+    background-color: white;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+/* .spinner{
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top: 10px solid #ff0266;
+    border-right: 10px solid #ff0266;
+    width: 200px;
+    height: 200px;
+    animation: rotate 10s linear infinite;
+} */
+
+
+  .code {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    font-family: "Days One", sans-serif;
+}
+
+.scene {
+    perspective: 400px;
+}
+
+.desc {
+    margin-top: 60px;
+    text-align: center;
+}
+.desc h2 {
+    margin: 0;
+    font-size: 26px;
+}
+.desc button {
+    border: 2px solid #130d1a;
+    background: transparent;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-family: "Days One", sans-serif;
+    box-shadow: 4px 4px 0 0px rgba(19, 13, 26, 0.5);
+    position: relative;
+    transition: 0.3s;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 20px;
+    overflow: hidden;
+}
+.desc button:after {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    content: "";
+    background: #130d1a;
+    transition: 0.3s;
+    z-index: -1;
+}
+.desc button:hover {
+    color: #fff;
+    letter-spacing: 2px;
+}
+.desc button:hover:after {
+    height: 100%;
+}
+.desc button:active {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+}
