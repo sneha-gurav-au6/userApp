@@ -99,7 +99,7 @@ class Home extends Component {
                             class="navbar-brand"
                             style={{ fontWeight: "bolder" }}
                         >
-                            Todo App
+                            User App
                         </b>
                         <button
                             className="navbar-toggler"
@@ -142,7 +142,7 @@ class Home extends Component {
                                 onClick={this.userSubmit}
                                 style={{ color: "white" }}
                             >
-                                Create Todo
+                                Create User
                             </button>
                         </div>
                         <div className="rightPart col-3 ">
@@ -151,7 +151,7 @@ class Home extends Component {
                                 style={{ color: "white" }}
                                 onClick={this.alluser}
                             >
-                                Get All Todo
+                                Get All User
                             </button>
                         </div>
                         <div className="col-3"></div>

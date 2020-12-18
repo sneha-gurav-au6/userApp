@@ -36,6 +36,7 @@ class EditUser extends Component {
         );
         //set college api data in state
         this.setState({ colleges: api.data });
+        console.log(this.state.colleges);
     }
 
     handleChange = (event) => {
@@ -100,7 +101,7 @@ class EditUser extends Component {
                     <div className="form-group ">
                         <h4>Update Profile</h4>
                         {/* add title */}
-                        <label for="exampleInputEmail1"> Name</label>
+                        <label for="exampleInputEmail1"> Enter Name</label>
                         <input
                             onChange={this.handleChange}
                             type="text"
@@ -113,7 +114,9 @@ class EditUser extends Component {
                     </div>
                     {/* add address */}
                     <div className="form-group">
-                        <label for="exampleFormControlTextarea1">address</label>
+                        <label for="exampleFormControlTextarea1">
+                            Enter address
+                        </label>
                         <input
                             onChange={this.handleChange}
                             type="text"
@@ -127,7 +130,7 @@ class EditUser extends Component {
 add birth date */}
                     <div className="form-group">
                         <label for="exampleFormControlTextarea1">
-                            birth_date
+                            Enter birth_date
                         </label>
                         <input
                             onChange={this.handleChange}
@@ -141,7 +144,9 @@ add birth date */}
                     </div>
                     {/* add gender */}
                     <div className="form-group">
-                        <label for="exampleFormControlTextarea1">gender</label>
+                        <label for="exampleFormControlTextarea1">
+                            Enter gender
+                        </label>
                         <input
                             onChange={this.handleChange}
                             type="text"
@@ -153,6 +158,9 @@ add birth date */}
                         />
                     </div>
                     {/* add hobbies */}
+                    <label for="exampleFormControlTextarea1">
+                        Choose hobbie
+                    </label>
                     <div className="checkbox">
                         <label>
                             <input
@@ -220,6 +228,9 @@ add birth date */}
                         ""
                     )}
                     {/* add college name from list of collgeges */}
+                    <label for="exampleFormControlTextarea1">
+                        Select your colloge
+                    </label>
                     <div className="form-group">
                         {this.state.colleges !== "" ? (
                             <div>
