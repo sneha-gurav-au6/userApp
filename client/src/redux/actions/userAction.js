@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 toast.configure();
 
+//calling the register route and dispatching user input for register
 export const RegisterUsers = (data1) => async (dispatch) => {
     console.log(data1.newUser);
 
@@ -27,10 +28,12 @@ export const RegisterUsers = (data1) => async (dispatch) => {
             dispatch({ type: RegisterUser, payload: res.data.user });
         })
         .catch((err) => {
+            //if error ,set error in reducer
             dispatch({ type: Get_Error, payload: err.response.data });
         });
 };
 
+//calling the login route and dispatching user input for login
 export const loginUsers = (data) => async (dispatch) => {
     console.log(data.newUser);
     await axios
@@ -41,30 +44,19 @@ export const loginUsers = (data) => async (dispatch) => {
                     position: toast.POSITION.TOP_CENTER,
                 });
 
-                console.log(data1.data);
-                // dispatch({ type: LoginUser, payload: data1.data.user });
+                //calling set token and passing parameters
                 setToken(data1.data.token, dispatch);
             }
             console.log(data1.data);
             setToken(data1.data.token, dispatch);
         })
         .catch((err) => {
+            //if error ,set error in reducer
             console.log(err.response.data);
             dispatch({ type: Get_Error, payload: err.response.data });
         });
 };
 
-// export const AllTodo = () => (dispatch) => {
-//     axios
-//         .get("/getalluser")
-//         .then((data) => {
-//             console.log(data.data.data);
-//             // dispatch({ type: Todo, payload: data.data.data });
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// };
 export const setToken = (res, dispatch) => {
     // Save token to local storage
     const token = res;

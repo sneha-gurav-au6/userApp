@@ -16,12 +16,14 @@ class Register extends Component {
     //getting input from form
     handleChange = (e) => {
         const { name, value } = e.target;
+        //setting all value to respective state
         this.setState({ [name]: value });
     };
 
     //submit input form detils
     handleSubmit = async (e) => {
         e.preventDefault();
+
         const newUser = {
             name: this.state.name,
             email: this.state.email,
@@ -41,14 +43,16 @@ class Register extends Component {
     // redirecting to login page
     componentWillReceiveProps(nextprops) {
         console.log(nextprops);
+        //if user is just registerd redirect to login page
         if (nextprops.auth.RegisterUser._id) {
             this.props.history.push("/login");
         }
     }
 
     render() {
+        //set validation errors in error varible
         const { errors } = this.props.auth;
-        console.log(this.props.auth.errors.message);
+
         return (
             <div className="container-fluid main">
                 {/* google login */}

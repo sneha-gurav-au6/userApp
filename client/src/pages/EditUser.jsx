@@ -8,9 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 toast.configure();
 
-// adding new product
+//user update
 
-class EditTodo extends Component {
+class EditUser extends Component {
     state = {
         name: "",
         address: "",
@@ -22,29 +22,33 @@ class EditTodo extends Component {
         newcollo: "",
         gender: "",
     };
+
     //to set userid
     async componentDidMount() {
         if (localStorage) {
+            //set token from local storage
             const id = localStorage.getItem("jwtToken");
             this.setState({ token: id });
         }
+        //fetching college api by axios
         const api = await axios.get(
             "http://universities.hipolabs.com/search?name=middle"
         );
-
+        //set college api data in state
         this.setState({ colleges: api.data });
-        console.log(this.state.colleges);
     }
 
     handleChange = (event) => {
+        //get name and value from user input
         const { name, value } = event.target;
-
+        //set all user input value to respective state
+        this.setState({ [name]: value });
+        //check if user is clicked for other hobbie and change thastate
         if (name === "other") {
             this.setState({ other: !this.state.other });
         }
 
-        this.setState({ [name]: value });
-        console.log(this.state.other_hobbi);
+        //pushing all hobies in hobbies state except other hobbi
         let newState = this.state;
         if (
             event.target.type === "checkbox" &&
@@ -52,23 +56,21 @@ class EditTodo extends Component {
         ) {
             newState.hobbies.push(name);
         }
-        // if (event.target.name === "other_hobbi") {
-        //     const newhobbi = this.state.other_hobbi;
-        //     console.log(newhobbi);
-        //     newState.hobbies.push(this.state.other_hobbi);
-        // }
+        //set new object in orinal state
         this.setState({ newState });
-
-        // console.log(name, value);
     };
 
+    //function runs when submit is clicked
     handleFormData = async (e) => {
         e.preventDefault();
-        console.log(this.state.other_hobbi);
+        //pushing other hobbie in hobbies array
         const newhobbi = this.state.other_hobbi;
         const newState = this.state;
         newState.hobbies.push(newhobbi);
+        //set state for hobbies
         this.setState({ newState });
+
+        //creating new object with new values
         const formData = {
             name: this.state.name,
             address: this.state.address,
@@ -77,16 +79,16 @@ class EditTodo extends Component {
             college: this.state.newcollo,
             gender: this.state.gender,
         };
-        console.log(formData);
+        //getting particular user id for that need to change
         const id = this.props.history.location.store;
-        console.log(id);
+        //calling edit profile route and submittig new values
         const datas = await axios.post(`/editProfile/${id}`, formData);
-        console.log(datas.data);
+        //display succsess msg if no error
         if (datas.status === 200) {
             toast.success("Updated Successfully!", {
                 position: toast.POSITION.TOP_CENTER,
             });
-            this.props.history.push("/all-todo");
+            this.props.history.push("/all-user");
         }
     };
 
@@ -109,6 +111,7 @@ class EditTodo extends Component {
                             placeholder="Name"
                         />
                     </div>
+                    {/* add address */}
                     <div className="form-group">
                         <label for="exampleFormControlTextarea1">address</label>
                         <input
@@ -121,7 +124,7 @@ class EditTodo extends Component {
                         />
                     </div>
                     {/* 
-add prority */}
+add birth date */}
                     <div className="form-group">
                         <label for="exampleFormControlTextarea1">
                             birth_date
@@ -136,6 +139,7 @@ add prority */}
                             placeholder="pri"
                         />
                     </div>
+                    {/* add gender */}
                     <div className="form-group">
                         <label for="exampleFormControlTextarea1">gender</label>
                         <input
@@ -148,7 +152,7 @@ add prority */}
                             placeholder="pri"
                         />
                     </div>
-
+                    {/* add hobbies */}
                     <div className="checkbox">
                         <label>
                             <input
@@ -215,7 +219,7 @@ add prority */}
                     ) : (
                         ""
                     )}
-
+                    {/* add college name from list of collgeges */}
                     <div className="form-group">
                         {this.state.colleges !== "" ? (
                             <div>
@@ -250,4 +254,4 @@ const mapStateToProps = (state) => {
         user: state.user,
     };
 };
-export default connect(mapStateToProps)(withRouter(EditTodo));
+export default connect(mapStateToProps)(withRouter(EditUser));

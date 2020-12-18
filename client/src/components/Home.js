@@ -17,15 +17,15 @@ class Home extends Component {
         token: null,
     };
 
-    //redirecting to create new todo
-    todoSubmit = (e) => {
+    //redirecting to create new user i.e register
+    userSubmit = (e) => {
         e.preventDefault();
         if (this.props.user.isAuthenticated !== true) {
             this.props.history.push({ pathname: "/register" });
-        } else {
-            this.props.history.push({ pathname: "/create-todo" });
         }
     };
+
+    //user logout function
     handleLogout = async (e) => {
         e.preventDefault();
         //dispatchng data
@@ -39,13 +39,13 @@ class Home extends Component {
             showCollapsedMenu: !this.state.showCollapsedMenu,
         });
     };
-    alltodo = async (e) => {
+    alluser = async (e) => {
         e.preventDefault();
 
         if (this.props.user.isAuthenticated !== true) {
             this.props.history.push({ pathname: "/register" });
         } else {
-            this.props.history.push({ pathname: "/all-todo" });
+            this.props.history.push({ pathname: "/all-user" });
         }
     };
     render() {
@@ -62,7 +62,7 @@ class Home extends Component {
                 </button>
             </li>
         );
-
+        //register-login links
         const registerLogin = (
             <>
                 <li class="btn btn-warning mr-sm-2">
@@ -114,42 +114,16 @@ class Home extends Component {
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                        {/* <div
-                            class="collapse navbar-collapse"
-                            id="navbarNavAltMarkup"
-                        >
-                            <div className="navbar-nav mr-0 my-2 my-lg-0">
-                                {this.props.user.isAuthenticated !== false ? (
-                                    <div className="logout">
-                                       
-                                    </div>
-                                ) : (
-                                    <div className="register">
-                                        <div>
-                                            <ul className="navbar-nav mr-0 my-2 my-lg-0">
-                                                
-                                            </ul>
-                                        </div>
-                                        <div className="login"></div>
-                                    </div>
-                                )}
-
-                              
-                            </div>
-                        </div> */}
                         <div
                             className={"collapse navbar-collapse " + show1}
                             id="navbarNav"
                         >
-                            {/* <div
-                                className="collapse navbar-collapse"
-                                id="navbar-menu"
-                            ></div> */}
                             <ul class="navbar-nav  mr-auto">
                                 <li class="nav-item active"></li>
                             </ul>
                             <ul className="navbar-nav">
                                 {" "}
+                                {/* if user is not authenticated show register-login else show logout */}
                                 {this.props.user.isAuthenticated === false
                                     ? registerLogin
                                     : logout}
@@ -165,7 +139,7 @@ class Home extends Component {
                         <div className="leftPart col-3">
                             <button
                                 className="btn btn-dark"
-                                onClick={this.todoSubmit}
+                                onClick={this.userSubmit}
                                 style={{ color: "white" }}
                             >
                                 Create Todo
@@ -175,57 +149,13 @@ class Home extends Component {
                             <button
                                 className="btn btn-dark"
                                 style={{ color: "white" }}
-                                onClick={this.alltodo}
+                                onClick={this.alluser}
                             >
                                 Get All Todo
                             </button>
                         </div>
                         <div className="col-3"></div>
                     </div>
-
-                    {/* <div className="rightPart col-8">
-                        <div className="">
-                            {this.state.task === "" ? (
-                                <div></div>
-                            ) : (
-                                <div>
-                                    {this.state.task.map((p) => (
-                                        <div class="card">
-                                            <div class="card-header">
-                                                Priority To Task :
-                                                {p.priority_of_task}
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    {p.name}
-                                                </h5>
-                                                <p class="card-text">
-                                                    {p.description}
-                                                </p>
-                                            </div>
-
-                                            <button
-                                                type="button"
-                                                className="btn btn-danger firstbutton"
-                                                id={p._id}
-                                                onClick={this.handlechange}
-                                            >
-                                                Delet Task
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="btn btn-danger secondbutton"
-                                                id={p._id}
-                                                onClick={this.handleUpdate}
-                                            >
-                                                Update Task
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div> */}
                 </div>
             </div>
         );

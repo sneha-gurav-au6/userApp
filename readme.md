@@ -1,15 +1,16 @@
 -Documentation Of Project:
-Todo Application -
-1.This is the application where user can create task (giving name,description,priority).But for creating task user need to register.
-2.After registering user can create todo ,update todo,delete todo,User can logout any time.
-3.user can see his task list that are created by him.
-4.user can assign any priority number he will get list of task in asending order of priority.
+User Application -
+1.This is the application where user can create users (giving name,email ,passowrd).i.e  by registering user.After register user need to login ,if already registerd he can directly login 
+2.for creating new user also need to register with ew user details 
+3.user can see all user list in decending order by clicking all user button .
 
-Authorization required routes:
-1.create todo
-2.update todo
-3.delet todo
-4.get list of created todo
+4.By clicking on delet button the particular user gets deleted.any user can delet any another user as per question 
+5.By clicking on update user button user details can update (here user can give/update extra details like hobbies gender,address,college etc )
+6.hobbies will select on clicking on heckbox button and  select college from list of colleges.when user gets logout user authentication will remove.
+7.app is deployed on heroku
+
+
+
 
 -Libreries used:
 Front-end : React , Redux,Bootstrap
@@ -19,11 +20,11 @@ For Authorization : Passport js,jwt token
 
 -steps to execute program:
 
-1. Type the url in search bar : https://corporate-coder-ass.herokuapp.com/
+1. Type the url in search bar : https://basicuser-app.herokuapp.com/
 2. When website loads user can perform operations
 
-Todo application deployed link:
-https://corporate-coder-ass.herokuapp.com/
+User application heroku deployed link:
+https://basicuser-app.herokuapp.com/
 
 Github link:
-https://github.com/sneha-gurav-au6/corporate-coder-ass1
+https://github.com/sneha-gurav-au6/userApp

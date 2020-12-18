@@ -49,9 +49,6 @@ class Login extends Component {
     }
     render() {
         const { errors } = this.props.auth;
-        // if (errors) {
-        //     this.setState({ errors: errors });
-        // }
 
         console.log(this.props.auth);
         return (

@@ -7,30 +7,36 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 toast.configure();
 
-class AllTask extends Component {
+//displaying all user list with details
+class AllUser extends Component {
     state = {
         users: "",
     };
+
+    //calling all user list route
     async componentDidMount() {
         const user = await axios.get("/getalluser");
-        console.log(user.data);
+        //seting user list in state
         this.setState({ users: user.data });
     }
     //redirecting to update todo
     handleUpdate = (e) => {
+        //getting id for which update is clicked
         const id = e.target.id;
-        console.log(id);
+
         e.preventDefault();
-        this.props.history.push({ pathname: "/update-todo", store: id });
+        //sending user id to update profile component
+        this.props.history.push({ pathname: "/update-profile", store: id });
     };
 
-    //deleting particular todo
+    //deleting particular user
     handlechange = async (e) => {
         e.preventDefault();
+        //getting id for which delet is clicked
         const id1 = e.target.id;
 
         const datas = await axios.post(`/deletProfile/${id1}`);
-
+        //display msg if user deleted
         if (datas.status === 200) {
             toast.success("Deleted Succefully!", {
                 position: toast.POSITION.TOP_CENTER,
@@ -43,6 +49,7 @@ class AllTask extends Component {
         return (
             <div className="main">
                 <div>
+                    {/* if user list is empty show no data found or still loads else show user list */}
                     {this.state.users ? (
                         <div className="row">
                             {this.state.users.map((p) => (
@@ -72,19 +79,17 @@ class AllTask extends Component {
                                                 <dd>{p.hobbies.join(",")}</dd>
                                             </dl>
 
-                                            {/* <p className="card-text">
-                                                {p.hobbies}
-                                            </p> */}
                                             <p className="card-text">
                                                 {p.address}
                                             </p>
+
                                             <button
                                                 type="button"
                                                 className="btn btn-danger card-link"
                                                 id={p._id}
                                                 onClick={this.handlechange}
                                             >
-                                                Delet Task
+                                                Delet User
                                             </button>
                                             <button
                                                 type="button"
@@ -92,26 +97,10 @@ class AllTask extends Component {
                                                 id={p._id}
                                                 onClick={this.handleUpdate}
                                             >
-                                                Update Task
+                                                Update User
                                             </button>
                                         </div>
                                     </div>
-                                    {/* <button
-                                            type="button"
-                                            className="btn btn-danger firstbutton"
-                                            id={p._id}
-                                            onClick={this.handlechange}
-                                        >
-                                            Delet Task
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-danger secondbutton"
-                                            id={p._id}
-                                            onClick={this.handleUpdate}
-                                        >
-                                            Update Task
-                                        </button> */}
                                 </div>
                             ))}
                         </div>
@@ -129,4 +118,4 @@ const mapStateToProps = (state) => {
         user: state.todo,
     };
 };
-export default connect(mapStateToProps)(withRouter(AllTask));
+export default connect(mapStateToProps)(withRouter(AllUser));

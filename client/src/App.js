@@ -5,14 +5,22 @@ import setAuthToken from "./redux/actions/setAuthToken";
 import { setCurrentUser } from "./redux/actions/userAction";
 
 import { connect } from "react-redux";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Dashboard from "./components/Dashboard";
-import CreateTodo from "./pages/CreateTodo";
-import EditTodo from "./pages/EditTodo";
-import AllTask from "./pages/AllTask";
 import "./App.css";
+
+//importing register from componenent
+import Register from "./components/Register";
+//importing login from componenent
+import Login from "./components/Login";
+
+//importing home from componenent
+import Home from "./components/Home";
+
+//importing edituser from componenent
+
+import EditUser from "./pages/EditUser";
+
+//importing all user from componenent
+import AllUser from "./pages/AllUser";
 
 class App extends Component {
     componentDidMount() {
@@ -30,13 +38,20 @@ class App extends Component {
         return (
             <div className="App">
                 <Switch>
+                    {/* login route */}
                     <Route exact path="/login" component={Login} />
+
+                    {/* register route */}
                     <Route exact path="/register" component={Register} />
+
+                    {/* home route */}
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/dashboard" component={Dashboard} />
-                    <Route exact path="/create-todo" component={CreateTodo} />
-                    <Route exact path="/update-todo" component={EditTodo} />
-                    <Route exact path="/all-todo" component={AllTask} />
+
+                    {/* edit profile route */}
+                    <Route exact path="/update-profile" component={EditUser} />
+
+                    {/* get all user list route */}
+                    <Route exact path="/all-user" component={AllUser} />
                 </Switch>
             </div>
         );
